@@ -9,9 +9,15 @@
 * gym
 * Mujoco
 
+# Training the model
+First adjust the path values and hyper param values in the common file .
 ```javascript
-
-jajkvbbva
+python train.py
 
 ```
+And then to see the tensorboard results, in the  command line:
+```javascript
+python -m tensorboard.main --logdir=[PATH_TO_LOGDIR]
+```
 
+The model will be saved in the  specified dir.
