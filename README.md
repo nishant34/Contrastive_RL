@@ -4,10 +4,21 @@
 * Tensorboard logs will be uploaded soon.
 
 # Requirements
+Anaconda can be installed for package management .
+Then create an environment with:
+```javascript
+conda create -n myenv
+source activate myenv
+```
+Now after entering the environment install the following packages. 
+
 * Python 3.6 or greater will be fine.
 * Pytorch 1.14 or greater will be fine.
 * gym
 * Mujoco
+* dmc2gym
+* skimage
+
 
 # Training the model
 First adjust the path values and hyper param values in the common file .
