@@ -14,7 +14,7 @@ class Encoder(nn.Module):
             self.output_size = Encoded_feature_size
             self.num_filters = num_filters
             self.conv1 = nn.Conv2d(self.num_input_channels,num_filters,3,stride=1)
-            #self.bn1 = nn.LayerNorm()
+            self.bn = nn.BatchNorm2d(num_filters)
             self.conv2 = nn.Conv2d(self.num_filters,num_filters,3,stride=1)
             self.conv3 = nn.Conv2d(self.num_filters,num_filters,3,stride=1)
             self.conv4 = nn.Conv2d(self.num_filters,num_filters,3,stride=2)
@@ -28,19 +28,19 @@ class Encoder(nn.Module):
     def forward(self,obs):
         obs = obs/255
         obs = self.conv1(obs)
-        #obs = self.bn(obs)
+        obs = self.bn(obs)
         obs  = F.relu(obs)
         obs = self.conv2(obs)
-        #obs = self.bn(obs)
+        obs = self.bn(obs)
         obs  = F.relu(obs)
         obs = self.conv3(obs)
-        #obs = self.bn(obs)
+        obs = self.bn(obs)
         obs  = F.relu(obs)
         obs = self.conv4(obs)
-        #obs = self.bn(obs)
+        obs = self.bn(obs)
         obs  = F.relu(obs)
         obs = self.conv5(obs)
-        #obs = self.bn(obs)
+        obs = self.bn(obs)
         out  =obs.view(obs.shape[0],-1)
         out = self.final_fc(out)
         out  = torch.tanh(out)
