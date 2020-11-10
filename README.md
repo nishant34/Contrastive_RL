@@ -19,6 +19,8 @@ Now after entering the environment install the following packages.
 * dmc2gym
 * skimage
 
+Mujoco can be downloaded from the official website and there are certain steps for it to work which are given on the website.
+
 
 # Training the model
 First adjust the path values and hyper param values in the common file .
@@ -32,3 +34,12 @@ python -m tensorboard.main --logdir=[PATH_TO_LOGDIR]
 ```
 
 The model will be saved in the  specified dir.
+
+# File Structure:
+The code structure is as follows:
+* Actor_critic.py : contains the code for soft actor critic model.
+* common.py : contains various hyperparameters and paths for saving and loading files.
+* train.py : contains the code for  training along with generating tensorbord logs.
+* utilities : contains code of various functions important for the training pipeline.
+* video_object.py : contains video recorder class to record images.
+
